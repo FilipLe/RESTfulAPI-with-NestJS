@@ -1,5 +1,5 @@
 # JSON Web Token Authorization
-<br>
+Hi
 ```
   				+--------+                                           +---------------+
   				|        |--(A)------- Authorization Grant --------->|               |
@@ -21,7 +21,8 @@
   				|        |                                           |               |
   				|        |<-(H)----------- Access Token -------------|               |
   				+--------+           & Optional Refresh Token        +---------------+
-```
+
+
 - *(A)* The client requests an access token by authenticating with the authorization server and presenting an authorization grant.
   
 - *(B)*  The authorization server authenticates the client and validates the authorization grant, and if valid, issues an access token and a refresh token.
@@ -37,3 +38,4 @@
 - *(G)*  The client requests a new access token by authenticating with the authorization server and presenting the refresh token. The client authentication requirements are based on the client type and the authorization server policies.
 
 - *(H)*  The authorization server authenticates the client and validates the refresh token, and if valid, issues a new access token (and, optionally, a new refresh token).
+```
