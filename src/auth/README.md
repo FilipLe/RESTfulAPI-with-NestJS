@@ -1,5 +1,5 @@
 # JSON Web Token Authorization
-Hi
+Brief illustration of how JWT Authentication works:
 ```
   				+--------+                                           +---------------+
   				|        |--(A)------- Authorization Grant --------->|               |
