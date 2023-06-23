@@ -79,7 +79,5 @@ export class AuthService{
             console.error(err);
             return;
         }
-
-        
     }
 }
