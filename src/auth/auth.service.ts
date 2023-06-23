@@ -24,6 +24,20 @@ export class AuthService{
     }
 
     async signin(){
+        // reading json file
+        const fs = require("fs");
+
+        fs.readFile("src/auth/auth.users.json", "utf8", (err, userJSON) => {
+            if (err) {
+              console.log("File read failed:", err);
+              return;
+            }
+            const userObject = JSON.parse(userJSON);
+            console.log(userObject.email);
+            return {userObject};
+        });
+
+        // 1:12:00
         // 1. find the user by email
         // 2. if user does not exist, throw Exception
 
@@ -31,6 +45,6 @@ export class AuthService{
         // 4. if password incorrect, throw Exception
 
         // 5. send back the user
-        return {msg: 'I have signed in'};
+        // return {msg: 'I have signed in'};
     }
 }
