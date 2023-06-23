@@ -39,6 +39,7 @@ export class AuthService{
             const userObject = JSON.parse(jsonString);
 
             // 1:14:00 - 1:16:00 
+            
             // 1. find the user by email 
             // 2. if user does not exist, throw Exception
             for(let i = 0; i < userObject.length; i++){
@@ -46,18 +47,18 @@ export class AuthService{
                     throw new ForbiddenException('Credentials incorrect');
                 }
 
-                // 3. compare passwords
-                // 4. if password incorrect, throw Exception                
+                // if user does exist   
                 else{
+                    // 3. compare passwords
                     let user = userObject[i];
                     const passwordMatches = await argon.verify(user.hash, dto.password);
+
+                    // 4. if password incorrect, throw Exception   
+                    if (!passwordMatches){
+                        throw new ForbiddenException('Credentials incorrect');
+                    }
                 }
             }
-
-            
-            
-
-
 
             // 5. send back the user
             return userObject;
