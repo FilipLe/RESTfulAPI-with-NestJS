@@ -1,6 +1,7 @@
 import { Injectable } from "@nestjs/common";
 import { AuthDto } from "./dto";
 import * as argon from 'argon2';
+import * as fs from 'fs';
 
 @Injectable({})
 export class AuthService{
@@ -25,17 +26,16 @@ export class AuthService{
 
     async signin(){
         // reading json file
-        const fs = require("fs");
-
-        fs.readFile("src/auth/auth.users.json", "utf8", (err, userJSON) => {
-            if (err) {
-              console.log("File read failed:", err);
-              return;
-            }
-            const userObject = JSON.parse(userJSON);
-            console.log(userObject.email);
-            return {userObject};
-        });
+        try {
+            const jsonString = fs.readFileSync('src/auth/auth.users.json', 'utf-8');
+            const userObject = JSON.parse(jsonString);
+            console.log(userObject);
+            console.log(userObject.users[0].email);
+            return userObject;
+        } catch (err) {
+            console.error(err);
+            return;
+        }
 
         // 1:12:00
         // 1. find the user by email
