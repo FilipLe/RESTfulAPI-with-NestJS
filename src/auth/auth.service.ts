@@ -56,14 +56,19 @@ export class AuthService{
                     if (!passwordMatches){
                         throw new ForbiddenException('Credentials incorrect. Passcode is incorrect.');
                     }
+
+                    // 4. otherwise, user login successful
+                    else{
+                        console.log("Login Successful.");
+                    }
                 }
             }
-            // 4. if we reached end of loop --> user does not exist, throw Exception
+            // 5. if we reached end of loop --> user does not exist, throw Exception
             if(found == false && i == userObject.length){
                 throw new ForbiddenException('Credentials incorrect. User not found.');
             }
 
-            // 5. send back the user
+            // 6. send back the user
             return userObject;
         } 
         
