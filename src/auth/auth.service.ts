@@ -10,8 +10,8 @@ export class AuthService{
         const hash = await argon.hash(dto.password);
 
         // 2. save the new user
-        const user = {email: dto.email, hash};
-        
+        const user = {email: dto.email, password: dto.password, hash};
+
         // adding to Json DB @ 1:04:00
         const file = fs.readFileSync('src/auth/auth.userTest.json')
         
