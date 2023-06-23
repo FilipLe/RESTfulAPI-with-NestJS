@@ -10,9 +10,26 @@ export class AuthService{
         const hash = await argon.hash(dto.password);
 
         // 2. save the new user in list for now
-        let userArr: {email: string, hash}[] = [];
+        // let userArr: {email: string, hash}[] = [];
         const user = {email: dto.email, hash};
-        userArr.push(user);
+        // userArr.push(user);
+
+
+
+        // ADDING TO JSON
+        const file = fs.readFileSync('src/auth/auth.userTest.json')
+        
+        // if json empty
+        if (file.length == 0) {
+            // create empty array[] and add user object to it
+            fs.writeFileSync("src/auth/auth.userTest.json", JSON.stringify([user]))
+        
+        } else {
+            // simply add object to existing []
+            const json = JSON.parse(file.toString())
+            json.push(user);
+            fs.writeFileSync("src/auth/auth.userTest.json", JSON.stringify(json))
+        }
 
         /* 
         LATER
