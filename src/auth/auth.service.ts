@@ -1,4 +1,4 @@
-import { Injectable } from "@nestjs/common";
+import { ForbiddenException, Injectable } from "@nestjs/common";
 import { AuthDto } from "./dto";
 import * as argon from 'argon2';
 import * as fs from 'fs';
@@ -31,27 +31,37 @@ export class AuthService{
         return user;
     }
 
-    async signin(){
-        // reading json file
+    async signin(dto: AuthDto){
+        
         try {
+            // reading json file
             const jsonString = fs.readFileSync('src/auth/auth.userTest.json', 'utf-8');
             const userObject = JSON.parse(jsonString);
-            console.log(userObject);
-            console.log(userObject[0].email);
+
+            // 1:14:00 - 1:16:00 
+            // 1. find the user by email 
+            // 2. if user does not exist, throw Exception
+            for(let i = 0; i < userObject.length; i++){
+                if(JSON.stringify(userObject[i].email) !== JSON.stringify(dto.email)){
+                    throw new ForbiddenException('Credentials incorrect');
+                }
+            }
+
+            // 3. compare passwords
+            // 4. if password incorrect, throw Exception
+
+            
+
+            // 5. send back the user
             return userObject;
-        } catch (err) {
+        } 
+        
+        
+        catch (err) {
             console.error(err);
             return;
         }
 
-        // 1:12:00 
-        // 1. find the user by email 
-        // 2. if user does not exist, throw Exception
-
-        // 3. compare passwords
-        // 4. if password incorrect, throw Exception
-
-        // 5. send back the user
-        // return {msg: 'I have signed in'};
+        
     }
 }
