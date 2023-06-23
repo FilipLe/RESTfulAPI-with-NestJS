@@ -12,7 +12,7 @@ export class AuthService{
         let userArr: {email: string, hash}[] = [];
         const user = {email: dto.email, hash};
         userArr.push(user);
-        
+
         /* 
         LATER
         save the new user in the db
@@ -21,8 +21,6 @@ export class AuthService{
 
         // return the saved user
         return user;
-
-        return {msg: 'I have signed up'};
     }
 
     signin(){
