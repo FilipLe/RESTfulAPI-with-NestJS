@@ -1,1 +1,1 @@
-[{"email":"hi@gmail.com","hash":"$argon2id$v=19$m=65536,t=3,p=4$MnAp0Fkn81LPLCiO9ThWlw$KKtyvzHL87oLrn6lHzTjJpQCI2yRTdxGHaw9QVxMcTw"},{"email":"bye@gmail.com","hash":"$argon2id$v=19$m=65536,t=3,p=4$LXuZvxbWdkM7cFI5BIXd/Q$F99LfB7VJXDtHgaliT8Go+0kza75pU+oOh1vRXn9fF8"}]
+[{"email":"bob@gmail.com","hash":"$argon2id$v=19$m=65536,t=3,p=4$YvPI3PMXBzmb5sjtfEq3mA$emyifHGKzamAtV861zHJERPF9N7ylKC5teUCcw76LHI"},{"email":"adam@gmail.com","hash":"$argon2id$v=19$m=65536,t=3,p=4$FGlpxR6hFCDj41QN0AyLKQ$rEp2X0/5u4bKwF4lQyA5X1v/oVmurN2P6/YXOpyJ0jk"}]

@@ -9,14 +9,10 @@ export class AuthService{
         // 1. generate the password hash
         const hash = await argon.hash(dto.password);
 
-        // 2. save the new user in list for now
-        // let userArr: {email: string, hash}[] = [];
+        // 2. save the new user
         const user = {email: dto.email, hash};
-        // userArr.push(user);
-
-
-
-        // ADDING TO JSON
+        
+        // adding to Json DB @ 1:04:00
         const file = fs.readFileSync('src/auth/auth.userTest.json')
         
         // if json empty
@@ -31,12 +27,6 @@ export class AuthService{
             fs.writeFileSync("src/auth/auth.userTest.json", JSON.stringify(json))
         }
 
-        /* 
-        LATER
-        save the new user in the db
-        @ 1:04:00, we will do DB later
-        */
-
         // 3. return the saved user
         return user;
     }
@@ -44,7 +34,7 @@ export class AuthService{
     async signin(){
         // reading json file
         try {
-            const jsonString = fs.readFileSync('src/auth/auth.users.json', 'utf-8');
+            const jsonString = fs.readFileSync('src/auth/auth.userTest.json', 'utf-8');
             const userObject = JSON.parse(jsonString);
             console.log(userObject);
             console.log(userObject[0].email);
@@ -55,7 +45,7 @@ export class AuthService{
         }
 
         // 1:12:00 
-        // 1. find the user by email
+        // 1. find the user by email 
         // 2. if user does not exist, throw Exception
 
         // 3. compare passwords
