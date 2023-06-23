@@ -47,7 +47,7 @@ export class AuthService{
             const jsonString = fs.readFileSync('src/auth/auth.users.json', 'utf-8');
             const userObject = JSON.parse(jsonString);
             console.log(userObject);
-            console.log(userObject.users[0].email);
+            console.log(userObject[0].email);
             return userObject;
         } catch (err) {
             console.error(err);
