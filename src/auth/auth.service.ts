@@ -45,11 +45,18 @@ export class AuthService{
                 if(JSON.stringify(userObject[i].email) !== JSON.stringify(dto.email)){
                     throw new ForbiddenException('Credentials incorrect');
                 }
+
+                // 3. compare passwords
+                // 4. if password incorrect, throw Exception                
+                else{
+                    let user = userObject[i];
+                    const passwordMatches = await argon.verify(user.hash, dto.password);
+                }
             }
 
-            // 3. compare passwords
-            // 4. if password incorrect, throw Exception
             
+            
+
 
 
             // 5. send back the user
