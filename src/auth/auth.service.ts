@@ -60,6 +60,7 @@ export class AuthService{
                     // 4. otherwise, user login successful
                     else{
                         console.log("Login Successful.");
+                        console.log(user.email);
                     }
                 }
             }
