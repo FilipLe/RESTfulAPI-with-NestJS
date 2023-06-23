@@ -11,7 +11,7 @@ export class AuthController{
     // Post Sign Up e-mail @ 47:26 @ https://www.youtube.com/watch?v=GHTA143_b-s&t=1261s
     signup(@Body() dto: AuthDto){
         console.log(dto);
-        return this.authService.signup();
+        return this.authService.signup(dto);
     }
 
     @Post('signin')
