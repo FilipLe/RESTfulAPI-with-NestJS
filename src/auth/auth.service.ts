@@ -40,24 +40,27 @@ export class AuthService{
 
             // 1:14:00 - 1:16:00 
             
+            let i = 0;
+            let found: boolean = false;
             // 1. find the user by email 
-            // 2. if user does not exist, throw Exception
-            for(let i = 0; i < userObject.length; i++){
-                if(JSON.stringify(userObject[i].email) !== JSON.stringify(dto.email)){
-                    throw new ForbiddenException('Credentials incorrect');
-                }
+            for(i = 0; i < userObject.length; i++){               
+                // if user exists
+                if(userObject[i].email === dto.email){
+                    found = true;
 
-                // if user does exist   
-                else{
-                    // 3. compare passwords
+                    // 2. compare passwords
                     let user = userObject[i];
                     const passwordMatches = await argon.verify(user.hash, dto.password);
 
-                    // 4. if password incorrect, throw Exception   
+                    // 3. if password incorrect, throw Exception   
                     if (!passwordMatches){
-                        throw new ForbiddenException('Credentials incorrect');
+                        throw new ForbiddenException('Credentials incorrect. Passcode is incorrect.');
                     }
                 }
+            }
+            // 4. if we reached end of loop --> user does not exist, throw Exception
+            if(found == false && i == userObject.length){
+                throw new ForbiddenException('Credentials incorrect. User not found.');
             }
 
             // 5. send back the user
