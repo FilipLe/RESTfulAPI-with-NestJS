@@ -16,6 +16,7 @@ describe('App e2e', () => {
     // creating NestJS application testing application for e2e testing
     app = moduleRef.createNestApplication();
     
+    // from main.ts
     app.useGlobalPipes(new ValidationPipe({
       // strip out any input that is not defined in the DTO
       whitelist: true,
@@ -34,6 +35,6 @@ describe('App e2e', () => {
 
   // test DB
 
-  
+
   it.todo('should pass');
 });
