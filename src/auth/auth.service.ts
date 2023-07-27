@@ -12,7 +12,7 @@ export class AuthService{
         // 2. save the new user
         const user = {email: dto.email, password: dto.password, hash};
 
-        // adding to Json DB @ 1:04:00
+        // adding to Json DB
         const file = fs.readFileSync('src/auth/auth.userTest.json')
         
         // if json empty
@@ -38,9 +38,7 @@ export class AuthService{
             // reading json file
             const jsonString = fs.readFileSync('src/auth/auth.userTest.json', 'utf-8');
             const userObject = JSON.parse(jsonString);
-
-            // 1:14:00 - 1:16:00 
-            
+             
             let i = 0;
             let found: boolean = false;
             // 1. find the user by email 
